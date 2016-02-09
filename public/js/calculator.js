@@ -15,13 +15,13 @@ function add(num){
   this.current += num;
 }
 function subtract(num){
-  
+  this.current -= num;
 }
 function multiply(num){
-  
+  this.current *= num;
 }
 function divide(num){
-  
+  this.current /= num;
 }
 function result(){
   return this.current;
