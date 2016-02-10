@@ -6,19 +6,28 @@
 }
 
 #content{
-
+padding-top: 50px;
 }
 
 #calculator-body {
-
+  width: 280px;
+  padding-top: 20px;
+  background-color: grey;
+  border-radius: 10px;
 }
 
 #display {
-
+  width: 230px;
+  height: 40px;
+  background-color: white;
+  text-align: right;
+  font-size: 30px;
+  border-radius: 4px;
 }
 
 .key {
-
+width: 50px;
+margin: 5px 5px 5px 0px;
 }
 
 .operator {
