@@ -4,6 +4,7 @@ $(document).ready(function(){
   var lastOperation = '';
 
 
+
   $('#clear').on('click', clear);
   $('#plus').on('click', plus);
   $('#equal').on('click', equal);
@@ -19,7 +20,12 @@ $(document).ready(function(){
 
 
   function updateDisplay(){
-    
+    var num = $(this).text();
+    if($display.text() === "0"){
+        $display.text(num);
+    } else {
+        $display.text($display.text() + num);
+    }
   }
   function divide(){
 
