@@ -22,27 +22,27 @@ $(document).ready(function(){
     
   }
   function divide(){
-    
+
   }
 
   function multiply(){
-    
+
   }
 
   function subtract(){
-    
+
   }
 
   function equal(){
-    
+
   }
 
   function plus(){
-    
+
   }
 
   function clear(){
-    
+
   }
 
   function memAdd(){
@@ -58,7 +58,7 @@ $(document).ready(function(){
   }
 
   function memDisplay(){
-    
+
   }
 
 

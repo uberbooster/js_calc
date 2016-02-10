@@ -26,14 +26,23 @@ padding-top: 50px;
 }
 
 .key {
-width: 50px;
-margin: 5px 5px 5px 0px;
+  width: 50px;
+  margin: 5px 5px 5px 0px;
+  background-color: yellow;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.num {
+
 }
 
 .operator {
-
+  background-color: red;
 }
 
-#equal{
-
+#equal {
+  width: 230px;
+  font-weight: bold;
+  font-size: 20px;
 }
