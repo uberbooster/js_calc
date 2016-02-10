@@ -52,6 +52,8 @@ $(document).ready(function(){
               //  The "else" only executes if the "/" button was pressed AFTER another operator was already pressed.
               //  (e.g. (16 + 48) / 8 = 8) Notice the / was the second expression, so calculator.current already
               //  had 16 + 48 (or 64) stored in it.  Here 64 / 8 = 8, so calculator.current will now equal 8.
+      calculator.result = calculator.current / parseFloat($display.text());
+      $display.text(calculator.current);
     }
     clearDisplay=true;  //  This allows the number to not disapear on the display, but sets a flag
                         //  so that the display will be cleared only when another number key is clicked
@@ -59,11 +61,25 @@ $(document).ready(function(){
   }
 
   function multiply(){
-
+    lastOperation = $(this).text();
+    if(calculator.current === 0){
+      calculator.current = parseFloat($display.text());
+    } else {
+      calculator.current = calculator.current * parseFloat($display.text());
+      $display.text(calculator.current);
+    }
+    clearDisplay=true;
   }
 
   function subtract(){
-
+    lastOperation = $(this).text();
+    if(calculator.current === 0){
+      calculator.current = parseFloat($display.text());
+    } else {
+      calculator.current = calculator.current - parseFloat($display.text());
+      $display.text(calculator.current);
+    }
+    clearDisplay=true;
   }
 
   function equal(){ //  This runs once the equal button is clicked
@@ -72,19 +88,41 @@ $(document).ready(function(){
                               //  8 then "=", the result will be what the user entered as their last number.
                               // (e.g. 8 = 8, 4 = 4, 234 = 234)
       calculator.result = parseFloat($display.text());
-    } else {
+    } else if(lastOperation === "/") {
         calculator.result = calculator.current / parseFloat($display.text());
         $display.text(calculator.result);
+    } else if(lastOperation === "x"){
+        calculator.result = calculator.current * parseFloat($display.text());
+        $display.text(calculator.result);
+    } else if(lastOperation === "+"){
+        calculator.result = calculator.current + parseFloat($display.text());
+        $display.text(calculator.result);
+    } else if(lastOperation === "-"){
+        calculator.result = calculator.current - parseFloat($display.text());
+        $display.text(calculator.result);
+    } else {
+        $display.text(calculator.result);
     }
+    calculator.current = 0;
     clearDisplay=true;
   }
 
   function plus(){
-
+    lastOperation = $(this).text();
+    if(calculator.current === 0){
+      calculator.current = parseFloat($display.text());
+    } else {
+      calculator.current = calculator.current + parseFloat($display.text());
+      $display.text(calculator.current);
+    }
+    clearDisplay=true;
   }
 
   function clear(){
-
+    var num = "0"
+    lastOperation = '';
+    $display.text(0);
+    clearDisplay=true;
   }
 
   function memAdd(){
