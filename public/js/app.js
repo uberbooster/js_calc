@@ -15,10 +15,10 @@ $(document).ready(function(){
   $('#multiply').on('click', multiply);
   $('#divide').on('click', divide);
   $('.num').on('click', updateDisplay);
-  $('mem-plus').on('click', memAdd);
-  $('mem-minus').on('click', memSub);
-  $('mem-recall').on('click', memDisplay);
-  $('mem-clear').on('click', memClear);
+  $('#mem-plus').on('click', memAdd);
+  $('#mem-minus').on('click', memSub);
+  $('#mem-recall').on('click', memDisplay);
+  $('#mem-clear').on('click', memClear);
 
 
 
@@ -156,22 +156,23 @@ $(document).ready(function(){
   }
 
   function memAdd(){
-
     calculator.memory = calculator.memory + parseFloat($display.text());
-    calculator.addToMemory = calculator.memory + parseFloat($display.text());
     clearDisplay=true
   }
 
   function memSub(){
-
+    calculator.memory = calculator.memory - parseFloat($display.text());
+    clearDisplay=true
   }
 
   function memClear(){
-
+    calculator.memory = 0;
+    clearDisplay=true;
   }
 
   function memDisplay(){
-
+    $display.text(calculator.memory);
+    clearDisplay=true;
   }
 
 
