@@ -9,6 +9,7 @@ $(document).ready(function(){
 
 
   $('#clear').on('click', clear);
+  $('#clear-entry').on('click', clearEntry);
   $('#plus').on('click', plus);
   $('#equal').on('click', equal);
   $('#subtract').on('click', subtract);
@@ -19,6 +20,8 @@ $(document).ready(function(){
   $('#mem-minus').on('click', memSub);
   $('#mem-recall').on('click', memDisplay);
   $('#mem-clear').on('click', memClear);
+  $('#back').on('click', back);
+  $('#sqrt').on('click', sqrt);
 
 
 
@@ -36,6 +39,12 @@ $(document).ready(function(){
                                               //  and put a 4 behind it to show 64.
     }
     clearDisplay = false;
+  }
+
+  function back(){
+    var num = $display.text();
+    num = num.slice(0, -1);
+    $display.text(num);
   }
 
   function divide(){ // This runs when the divide() function is called (i.e. the divide button is clicked)
@@ -99,6 +108,14 @@ $(document).ready(function(){
     }
     clearDisplay=true;
   }
+
+  function sqrt(){
+    lastOperation = '';
+    calculator.current = Math.sqrt(parseFloat($display.text()));
+    $display.text(calculator.current);
+    clearDisplay=true;
+  }
+
   function equal(){ //  This runs once the equal button is clicked
     equalPressCount = equalPressCount + 1;
     if(lastOperation === ''){ //  checking to see if the user has a calculation to perform. If the press
@@ -153,6 +170,11 @@ $(document).ready(function(){
     lastOperation = '';
     $display.text(0);
     clearDisplay=true;
+    calculator.current=0;
+  }
+
+  function clearEntry(){
+    $display.text(0);
   }
 
   function memAdd(){

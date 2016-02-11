@@ -1,5 +1,5 @@
 .row {
-  width: 280px;
+  width: 350px;
   margin-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -10,14 +10,14 @@
 }
 
 #calculator-body {
-  width: 280px;
+  width: 330px;
   padding-top: 20px;
   background-color: grey;
   border-radius: 10px;
 }
 
 #display {
-  width: 230px;
+  width: 285px;
   height: 40px;
   background-color: white;
   text-align: right;
@@ -42,7 +42,11 @@
 }
 
 #equal {
-  width: 230px;
+  width: 285px;
   font-weight: bold;
   font-size: 20px;
+}
+
+#sqrt {
+  text-decoration:overline;
 }
