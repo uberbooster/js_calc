@@ -125,6 +125,13 @@ $(document).ready(function(){
     clearDisplay=true;
   }
 
+  function percentage(){
+    lastOperation = '';
+    calculator.current = parseFloat($display.text()) / 100
+    $display.text(calculator.current);
+    clearDisplay=true;
+  }
+
   function equal(){ //  This runs once the equal button is clicked
     equalPressCount = equalPressCount + 1;
     if(lastOperation === ''){ //  checking to see if the user has a calculation to perform. If the press
