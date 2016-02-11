@@ -22,6 +22,8 @@ $(document).ready(function(){
   $('#mem-clear').on('click', memClear);
   $('#back').on('click', back);
   $('#sqrt').on('click', sqrt);
+  $('#inverse').on('click', inverse);
+  $('#percentage').on('click', percentage);
 
 
 
@@ -112,6 +114,13 @@ $(document).ready(function(){
   function sqrt(){
     lastOperation = '';
     calculator.current = Math.sqrt(parseFloat($display.text()));
+    $display.text(calculator.current);
+    clearDisplay=true;
+  }
+
+  function inverse(){
+    lastOperation = '';
+    calculator.current = 1 / parseFloat($display.text());
     $display.text(calculator.current);
     clearDisplay=true;
   }
