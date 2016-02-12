@@ -7,7 +7,14 @@ $(document).ready(function(){
   var lastDisplay = 0;
   var periodCount = 0;
 
+/*  Known bugs
+      When you press the same operator multiple times, it should ignore the additional inputs
+        instead, it clears the screen
+      Number length needs to be set to no more than 11 characters
+      If a number is divided by 0, the result is infinity, trying to display "Div/0"
+      When you press the minus button FIRST, it should show a negative number
 
+*/
 
   $('#clear').on('click', clear);
   $('#clear-entry').on('click', clearEntry);
@@ -28,70 +35,54 @@ $(document).ready(function(){
 
 
 
-  function updateDisplay(){ // this only runs if a "number"ed button was clicked.
+  function updateDisplay(){
     equalPressCount=0;
-    var num = $(this).text(); // This captures the value of the button that was clicked
-    //  If the variable clearDisplay is true or if what is displayed on
-    //  the calculator screen = "0" or "Div/0" or "", then
-
+    var num = $(this).text();
     if(num === "."){
       periodCount = periodCount + 1;
     }
     if(periodCount <= 1){
       if(clearDisplay === true || $display.text() === "0" || $display.text() === "Div/0" || $display.text() === ""){
-          $display.text(num); //  display which button was clicked
+          $display.text(num);
         } else {
-          $display.text($display.text() + num); // otherwise, take what was previously clicked and append what
-                                                //  was just clicked to the end of that number.  This way, if
-                                                //  clicked on a 6 first, then clicked on a 4, it would take the 6
-                                                //  and put a 4 behind it to show 64.
+          $display.text($display.text() + num);
         }
       }
     clearDisplay = false;
-    if(periodCount>1){
-      periodCount=1;
+    if(periodCount > 1){
+      periodCount = 1;
     }
-
   }
 
   function back(){
-    var checkForPeriod = $(this).text();
+    var checkForPeriod = $display.text().charAt($display.text().length-1);
     var num = $display.text();
-    num = num.slice(0, -1);
+    num = num.slice(0, -1); // This removes the last character in a string
     $display.text(num);
     if(checkForPeriod === "."){
       periodCount = 0;
     }
   }
 
-  function divide(){ // This runs when the divide() function is called (i.e. the divide button is clicked)
+  function divide(){
     equalPressCount=0;
     periodCount=0;
     if(lastOperation !== "/"){
       equal();
     }
-    lastOperation = $(this).text(); //  Since this only runs if the divide button is clicked, $(this).text() is
-                                    //  equal to the string "/", and we assign lastOperation to it (i.e. "/")
-                                    //  We do this so we know what the "last" operation was in case the user
-                                    //  enters =, we will know what operation to perform.
-    if(calculator.current === 0){ //  checks to see if anything has been assigned to calculator.current
-                                  //  [This tells us that this is the first operator in the calculated expression
-                                  //  (e.g. 16 / 8 + 4 = 6), the first operator in this expression is the "/"]
-      calculator.current = parseFloat($display.text()); //  if not, then change the string of numbers that
-                                                        //  have been entered to a floating point number using
-                                                        //  parseFloat($display.text()) and assign that number
-                                                        //  to calculator.current.
-    } else {  //  Otherwise, do this operation using what was previously entered (calculator.current), and divide
-              //  it by the last number the user entered (parseFloat($display.text()))
-              //  The "else" only executes if the "/" button was pressed AFTER another operator was already pressed.
-              //  (e.g. (16 + 48) / 8 = 8) Notice the / was the second expression, so calculator.current already
-              //  had 16 + 48 (or 64) stored in it.  Here 64 / 8 = 8, so calculator.current will now equal 8.
+    lastOperation = $(this).text();
+    if(calculator.current === 0){
+      console.log($display.text());
+      if ($display.text().charAt(0)==="-") {
+        calculator.current = parseFloat($display.text()) * -1;
+      } else {
+        calculator.current = parseFloat($display.text());
+      }
+    } else {
       calculator.current = calculator.current / parseFloat($display.text());
       $display.text(calculator.current);
     }
-    clearDisplay=true;  //  This allows the number to not disapear on the display, but sets a flag
-                        //  so that the display will be cleared only when another number key is clicked
-                        //  and the updateDisplay function is run.
+    clearDisplay=true;
   }
 
   function multiply(){
@@ -249,7 +240,11 @@ $(document).ready(function(){
     $display.text(calculator.memory);
     clearDisplay=true;
   }
-
-
-
+/*
+  function fixedLength(num){ still working on the error checker to make sure no display will ever be over 11 characters
+    if(num.length() > 11){
+      {num}.toFixed(11);
+    }
+  }
+*/
 });
