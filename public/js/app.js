@@ -44,10 +44,13 @@ $(document).ready(function(){
     if(periodCount <= 1){
       if(clearDisplay === true || $display.text() === "0" || $display.text() === "Div/0" || $display.text() === ""){
           $display.text(num);
-        } else {
-          $display.text($display.text() + num);
-        }
+      } else {
+          if($display.text().length===11){
+          }else{
+            $display.text($display.text() + num);
+          }
       }
+    }
     clearDisplay = false;
     if(periodCount > 1){
       periodCount = 1;
@@ -242,7 +245,7 @@ $(document).ready(function(){
   }
 /*
   function fixedLength(num){ still working on the error checker to make sure no display will ever be over 11 characters
-    if(num.length() > 11){
+    if(num.length > 11){
       {num}.toFixed(11);
     }
   }
