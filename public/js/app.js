@@ -5,6 +5,7 @@ $(document).ready(function(){
   var clearDisplay = true;
   var equalPressCount = 0
   var lastDisplay = 0;
+  var periodCount = 0;
 
 
 
@@ -32,25 +33,37 @@ $(document).ready(function(){
     var num = $(this).text(); // This captures the value of the button that was clicked
     //  If the variable clearDisplay is true or if what is displayed on
     //  the calculator screen = "0" or "Div/0" or "", then
-    if(clearDisplay === true || $display.text() === "0" || $display.text() === "Div/0" || $display.text() === ""){
-        $display.text(num); //  display which button was clicked
-    } else {
-        $display.text($display.text() + num); // otherwise, take what was previously clicked and append what
-                                              //  was just clicked to the end of that number.  This way, if
-                                              //  clicked on a 6 first, then clicked on a 4, it would take the 6
-                                              //  and put a 4 behind it to show 64.
+
+    if(num === "."){
+      periodCount = periodCount + 1;
     }
+    if(periodCount <= 1){
+      if(clearDisplay === true || $display.text() === "0" || $display.text() === "Div/0" || $display.text() === ""){
+          $display.text(num); //  display which button was clicked
+        } else {
+          $display.text($display.text() + num); // otherwise, take what was previously clicked and append what
+                                                //  was just clicked to the end of that number.  This way, if
+                                                //  clicked on a 6 first, then clicked on a 4, it would take the 6
+                                                //  and put a 4 behind it to show 64.
+        }
+      }
     clearDisplay = false;
+
   }
 
   function back(){
+    var checkForPeriod = $(this).text();
     var num = $display.text();
     num = num.slice(0, -1);
     $display.text(num);
+    if(checkForPeriod === "."){
+      periodCount = 0;
+    }
   }
 
   function divide(){ // This runs when the divide() function is called (i.e. the divide button is clicked)
     equalPressCount=0;
+    periodCount=0;
     if(lastOperation !== "/"){
       equal();
     }
@@ -80,6 +93,7 @@ $(document).ready(function(){
 
   function multiply(){
     equalPressCount=0;
+    periodCount=0;
     if(lastOperation !== "x"){
       equal();
     }
@@ -95,6 +109,7 @@ $(document).ready(function(){
 
   function subtract(){
     equalPressCount=0;
+    periodCount=0;
     if(lastOperation !== "-"){
       equal();
     }
@@ -110,6 +125,7 @@ $(document).ready(function(){
 
   function plus(){
     equalPressCount=0;
+    periodCount=0;
     if(lastOperation !== "+"){
       equal();
     }
@@ -125,6 +141,7 @@ $(document).ready(function(){
 
   function sqrt(){
     lastOperation = '';
+    periodCount=0;
     calculator.current = Math.sqrt(parseFloat($display.text()));
     $display.text(calculator.current);
     clearDisplay=true;
@@ -132,6 +149,7 @@ $(document).ready(function(){
 
   function inverse(){
     lastOperation = '';
+    periodCount=0;
     calculator.current = 1 / parseFloat($display.text());
     $display.text(calculator.current);
     clearDisplay=true;
@@ -139,6 +157,7 @@ $(document).ready(function(){
 
   function percentage(){
     lastOperation = '';
+    periodCount=0;
     calculator.current = parseFloat($display.text()) / 100
     $display.text(calculator.current);
     clearDisplay=true;
@@ -146,6 +165,7 @@ $(document).ready(function(){
 
   function equal(){ //  This runs once the equal button is clicked
     equalPressCount = equalPressCount + 1;
+    periodCount=0;
     if(lastOperation === ''){ //  checking to see if the user has a calculation to perform. If the press
                               //  8 then "=", the result will be what the user entered as their last number.
                               // (e.g. 8 = 8, 4 = 4, 234 = 234)
@@ -199,10 +219,12 @@ $(document).ready(function(){
     $display.text(0);
     clearDisplay=true;
     calculator.current=0;
+    periodCount=0;
   }
 
   function clearEntry(){
     $display.text(0);
+    periodCount=0;
   }
 
   function memAdd(){
