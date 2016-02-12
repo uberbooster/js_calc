@@ -44,10 +44,11 @@ body {
 }
 
 .solar-cell {
-  border: 3px solid black;
-  padding: 30px 30px 0px 30px;
-  margin: 20px 0px 10px 20px;
+  //border: 2px solid grey;
   border-radius: 8px;
+  width: 80%;
+  margin: 10px 0px 10px 30px;
+  box-shadow: -2px -2px 0px grey;
 }
 
 .key {
