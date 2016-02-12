@@ -5,11 +5,12 @@ var express = require('express'),
 
 server.use(logger);
 server.use(express.static(__dirname+'/public'));
+server.set('port', (process.env.PORT || 8080))
 
 server.get('/', home);
 
 
-server.listen(8080, listenCallback);
+server.listen(server.get('port'), listenCallback);
 
 
 function home(req, res){
@@ -17,5 +18,5 @@ function home(req, res){
 }
 
 function listenCallback(){
-  console.log('Now listening on port ' + 8080);
+  console.log('Now listening on port ' + server.get('port'));
 }
