@@ -51,6 +51,9 @@ $(document).ready(function(){
 
   function divide(){ // This runs when the divide() function is called (i.e. the divide button is clicked)
     equalPressCount=0;
+    if(lastOperation !== "/"){
+      equal();
+    }
     lastOperation = $(this).text(); //  Since this only runs if the divide button is clicked, $(this).text() is
                                     //  equal to the string "/", and we assign lastOperation to it (i.e. "/")
                                     //  We do this so we know what the "last" operation was in case the user
@@ -77,6 +80,9 @@ $(document).ready(function(){
 
   function multiply(){
     equalPressCount=0;
+    if(lastOperation !== "x"){
+      equal();
+    }
     lastOperation = $(this).text();
     if(calculator.current === 0){
       calculator.current = parseFloat($display.text());
@@ -89,6 +95,9 @@ $(document).ready(function(){
 
   function subtract(){
     equalPressCount=0;
+    if(lastOperation !== "-"){
+      equal();
+    }
     lastOperation = $(this).text();
     if(calculator.current === 0){
       calculator.current = parseFloat($display.text());
@@ -101,6 +110,9 @@ $(document).ready(function(){
 
   function plus(){
     equalPressCount=0;
+    if(lastOperation !== "+"){
+      equal();
+    }
     lastOperation = $(this).text();
     if(calculator.current === 0){
       calculator.current = parseFloat($display.text());
