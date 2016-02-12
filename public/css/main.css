@@ -63,36 +63,36 @@ body {
   box-shadow: 3px 3px 0px black;
   border: solid 2px black;
   border-radius: 5px;
-  background: linear-gradient(to bottom right, #dcdec1, #f7ff05);
+  background: linear-gradient(to bottom right, #ffffff, #f7ff05);
 }
 
 .key:active {
   transform: translate(2px,2px);
   box-shadow: 2px 2px 0px grey;
-  background: linear-gradient(to bottom right, #dcdec1, #f7ff05);
+  background: linear-gradient(to bottom right, #ffffff, #f7ff05);
 }
 
 
 .num{
   background: white;
-  background: linear-gradient(to bottom right, #bfd1de, #4792c4);
+  background: linear-gradient(to bottom right, #ffffff, #005791);
 }
 
 .num:active {
   background: white;
-  background: linear-gradient(to bottom right, #bfd1de, #4792c4);
+  background: linear-gradient(to bottom right, #ffffff, #005791);
   transform: translate(2px,2px);
   box-shadow: 2px 2px 0px grey;
 }
 
 .operator {
   background: red;
-  background: linear-gradient(to bottom right, #dec1c1, #ff0303);
+  background: linear-gradient(to bottom right, #ffffff, #ff0303);
 }
 
 .operator:active {
   background: red;
-  background: linear-gradient(to bottom right, #dec1c1, #ff0303);
+  background: linear-gradient(to bottom right, #ffffff, #ff0303);
   transform: translate(2px,2px);
   box-shadow: 2px 2px 0px grey;
 }
