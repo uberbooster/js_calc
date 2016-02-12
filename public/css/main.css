@@ -20,33 +20,58 @@ body {
 }
 
 #calculator-body {
-  width: 340px;
+  width: 345px;
+  height: 550px;
   padding-top: 20px;
-  background-color: grey;
-  border-radius: 10px;
-  border: 5px solid black;
+  background-color: #ffffcc;
+  border-radius: 25px;
+  border: 4px solid black;
+  box-shadow: 8px 8px 1px grey;
 }
 
 #display {
   width: 285px;
-  height: 60px;
-  background-color: white;
+  height: 70px;
+  padding-right: 4px;
+  background-color: lightgrey;
   text-align: right;
+  font-weight: bold;
   font-size: 50px;
-  border-radius: 4px;
-  margin-bottom: 40px;
+  border-radius: 8px;
+  border: solid 2px black;
+  margin-right: 8px;
+  box-shadow: -3px -3px 0px grey;
+}
+
+.solar-cell {
+  border: 3px solid black;
+  padding: 30px 30px 0px 30px;
+  margin: 20px 0px 10px 20px;
+  border-radius: 8px;
 }
 
 .key {
-  width: 50px;
-  margin: 5px 5px 5px 0px;
+  margin: 2px;
   background-color: yellow;
-  font-size: 16px;
+  font-size: 28px;
   font-weight: bold;
+  width: 50px;
+  height: 50px;
+  padding: 0px;
+  background-color: yellow;
+  box-shadow: 4px 4px 0px grey;
+  border: solid 2px black;
+  border-radius: 5px;
 }
 
-.num {
+.key:active {
+  transform: translate(2px,2px);
+  box-shadow: 2px 2px 0px grey;
+}
 
+
+.num {
+  background-color: white;
 }
 
 .operator {
@@ -60,7 +85,7 @@ body {
 }
 
 #sqrt {
-  text-decoration:overline;
+  font-size: 16px;
 }
 .digital-font {
 	font-family: 'DSDIGI' !important;

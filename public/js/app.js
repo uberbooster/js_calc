@@ -48,6 +48,9 @@ $(document).ready(function(){
         }
       }
     clearDisplay = false;
+    if(periodCount>1){
+      periodCount=1;
+    }
 
   }
 
